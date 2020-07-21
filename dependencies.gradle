@@ -1,0 +1,106 @@
+ext {
+
+    applicationId = "com.picpay.desafio.android"
+    versionCode = 1
+    versionName = "1.0.0"
+
+    //Android
+    androidBuildToolsVersion = "29.0.3"
+    androidMinSdkVersion = 21
+    androidTargetSdkVersion = 29
+    androidCompileSdkVersion = 29
+    kotlinVersion = '1.3.41'
+    constraintLayoutVersion = '1.1.2'
+    testInstrumentationRunnerName = "androidx.test.runner.AndroidJUnitRunner"
+    androidToolsBuildGradleVersion = '4.0.0'
+    androidxCoreVersion = '1.3.0'
+    androidxAppCompatVersion = '1.1.0'
+    constraintLayoutVersion = '1.1.3'
+    androidxArchVersion = "2.1.0"
+    recyclerViewVersion = "1.1.0"
+    materialVersion = "1.1.0"
+    koinVersion = "2.0.1"
+
+    //Kotlin
+    kotlinVersion = '1.3.72'
+
+    //Libs
+    retrofitVersion = "2.9.0"
+    rxAndroidVersion = "2.1.1"
+    moshiVersion = "1.9.3"
+    rxJavaVersion = "2.2.19"
+    rxAndroidVersion = "2.1.1"
+    lifeCycleVersion = "2.2.0"
+    activityKtxVersion = "1.1.0"
+    picassoVersion = "2.71828"
+
+    //Tests
+    junitVersion = '4.13'
+    androidXJunitVersion = '1.1.1'
+    espressoCoreVersion = '3.2.0'
+    mockkVersion = "1.10.0"
+    mockitoVersion = "2.27.0"
+    mockitoKotlinVersion = "2.1.0"
+    coreTestingVersion = "2.1.0"
+    testRunnerVersion = "1.1.1"
+    coreKtxTestVersion = "1.2.0"
+
+    modules = [
+            data        : ":data",
+            common      : ":common",
+            service     : ":service",
+            presentation: ":presentation"
+    ]
+
+    commonDependencies = [
+            picasso: "com.squareup.picasso:picasso:$picassoVersion"
+    ]
+
+    masterDependencies = [
+            androidToolsBuild : "com.android.tools.build:gradle:$androidToolsBuildGradleVersion",
+            kotlinGradlePlugin: "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion",
+            kotlinStdLib      : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
+            androidxCore      : "androidx.core:core-ktx:$androidxCoreVersion",
+            appCompat         : "androidx.appcompat:appcompat:$androidxAppCompatVersion",
+            retrofit          : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            rxAndroid         : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
+            rxJava            : "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    ]
+
+    masterTestDependencies = [
+            junit        : "junit:junit:$junitVersion",
+            androidXJunit: "androidx.test.ext:junit:$androidXJunitVersion",
+            espressoCore : "androidx.test.espresso:espresso-core:$espressoCoreVersion",
+            ioMockk      : "io.mockk:mockk:$mockkVersion",
+            mockito      : "org.mockito:mockito-core:$mockitoVersion",
+            mockitoKotlin: "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion",
+            coreTesting  : "androidx.arch.core:core-testing:$coreTestingVersion"
+    ]
+
+    dataDependencies = [
+            retrofitRx  : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
+            retrofitGson: "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    ]
+
+    dataTestDependencies = [
+
+    ]
+
+    presentationDependencies = [
+            constraintLayout  : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+            lifecycleViewModel: "androidx.lifecycle:lifecycle-viewmodel:$lifeCycleVersion",
+            activityKtx       : "androidx.activity:activity-ktx:$activityKtxVersion",
+            recyclerView      : "androidx.recyclerview:recyclerview:$recyclerViewVersion",
+            material          : "com.google.android.material:material:$materialVersion",
+            koin              : "org.koin:koin-android:$koinVersion",
+            koinCore          : "org.koin:koin-core:$koinVersion",
+            koinViewModel     : "org.koin:koin-androidx-viewmodel:$koinVersion"
+    ]
+
+    presentationTestDependencies = [
+            coreTestingAndroidX: "androidx.arch.core:core-testing:$androidxArchVersion",
+            testRunner        : "androidx.test:runner:$testRunnerVersion",
+            coreKtx           : "androidx.test:core-ktx:$coreKtxTestVersion"
+    ]
+
+}

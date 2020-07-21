@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.androidBuildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.androidMinSdkVersion
+        targetSdkVersion rootProject.ext.androidTargetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+
+        testInstrumentationRunner rootProject.ext.testInstrumentationRunnerName
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    def masterDependencies = rootProject.ext.masterDependencies
+    def commonDependencies = rootProject.ext.commonDependencies
+
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation masterDependencies.kotlinStdLib
+    implementation masterDependencies.androidxCore
+    implementation masterDependencies.appCompat
+    implementation masterDependencies.rxJava
+    implementation masterDependencies.rxAndroid
+
+    implementation commonDependencies.picasso
+
+    //Tests
+    testImplementation masterTestDependencies.junit
+    androidTestImplementation masterTestDependencies.androidXJunit
+    androidTestImplementation masterTestDependencies.espressoCore
+}

@@ -1,0 +1,51 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.androidBuildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.androidMinSdkVersion
+        targetSdkVersion rootProject.ext.androidTargetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+
+        testInstrumentationRunner rootProject.ext.testInstrumentationRunnerName
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    defaultConfig {
+        buildConfigField("String", "SERVER_URL", "\"http://careers.picpay.com/tests/mobdev/\"")
+    }
+
+    buildTypes {
+        release {
+            buildConfigField("String", "SERVER_URL", "\"http://careers.picpay.com/tests/mobdev/\"")
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    def masterDependencies = rootProject.ext.masterDependencies
+    def dataDependencies = rootProject.ext.dataDependencies
+
+    implementation project(rootProject.ext.modules.common)
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation masterDependencies.kotlinStdLib
+    implementation masterDependencies.androidxCore
+    implementation masterDependencies.appCompat
+
+    implementation masterDependencies.retrofit
+    implementation dataDependencies.retrofitRx
+    implementation dataDependencies.retrofitGson
+
+    //Tests
+    testImplementation masterTestDependencies.junit
+    testImplementation masterTestDependencies.ioMockk
+    androidTestImplementation masterTestDependencies.androidXJunit
+    androidTestImplementation masterTestDependencies.espressoCore
+}

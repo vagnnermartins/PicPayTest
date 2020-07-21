@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="error_icon_size">70dp</dimen>
+    <dimen name="md_default_margin">16dp</dimen>
+    <dimen name="md_big_margin">24dp</dimen>
+    <dimen name="md_hiper_margin">48dp</dimen>
+
+</resources>
